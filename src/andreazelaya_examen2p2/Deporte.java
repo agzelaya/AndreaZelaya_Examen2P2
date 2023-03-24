@@ -1,13 +1,17 @@
 package andreazelaya_examen2p2;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Deporte {
+public class Deporte implements Serializable{
     String nombre;
     ArrayList<Torneo> torneos = new ArrayList();
 
     public Deporte(String nombre) {
         this.nombre = nombre;
+    }
+
+    public Deporte() {
     }
 
     public String getNombre() {
@@ -28,8 +32,10 @@ public class Deporte {
 
     @Override
     public String toString() {
-        return nombre;
+        return "Deporte{" + "nombre=" + nombre + ", torneos=" + torneos + '}';
     }
+
+    
     
     
 }

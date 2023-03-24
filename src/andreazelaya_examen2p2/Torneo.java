@@ -1,8 +1,9 @@
 package andreazelaya_examen2p2;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Torneo {
+public class Torneo implements Serializable{
     String nombre;
     int periodo;
     ArrayList<Equipo> equipos = new ArrayList();
@@ -47,7 +48,7 @@ public class Torneo {
 
     @Override
     public String toString() {
-        return nombre;
+        return nombre + equipos;
     }
     
     

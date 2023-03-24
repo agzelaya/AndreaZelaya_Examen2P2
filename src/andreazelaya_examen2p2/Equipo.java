@@ -1,6 +1,8 @@
 package andreazelaya_examen2p2;
 
-public class Equipo {
+import java.io.Serializable;
+
+public class Equipo implements Serializable{
     String nombre;
     int puntos;
 
