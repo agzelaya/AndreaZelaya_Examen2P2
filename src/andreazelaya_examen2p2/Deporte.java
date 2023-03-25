@@ -32,7 +32,7 @@ public class Deporte implements Serializable{
 
     @Override
     public String toString() {
-        return "Deporte{" + "nombre=" + nombre + ", torneos=" + torneos + '}';
+        return nombre;
     }
 
     
