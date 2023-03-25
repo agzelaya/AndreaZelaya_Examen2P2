@@ -48,7 +48,7 @@ public class Torneo implements Serializable{
 
     @Override
     public String toString() {
-        return nombre + equipos;
+        return nombre;
     }
     
     

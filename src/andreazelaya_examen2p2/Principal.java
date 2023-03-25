@@ -8,11 +8,13 @@ import java.io.File;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
 import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
 
@@ -77,17 +79,21 @@ public class Principal extends javax.swing.JFrame {
         jd_agregarPartida = new javax.swing.JDialog();
         jPanel8 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        cb_e2 = new javax.swing.JComboBox<>();
         jLabel9 = new javax.swing.JLabel();
         jSpinner2 = new javax.swing.JSpinner();
         jButton6 = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cb_e1 = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
         jSpinner1 = new javax.swing.JSpinner();
         jd_descarga = new javax.swing.JDialog();
         jPanel10 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jpb_barra = new javax.swing.JProgressBar();
+        jd_tabla = new javax.swing.JDialog();
+        jPanel11 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jtable_puntos = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jb_agregarDeporte = new javax.swing.JButton();
@@ -249,6 +255,11 @@ public class Principal extends javax.swing.JFrame {
         popup_torneo.add(jmi_listarEquipos);
 
         jmi_tablaPos.setText("Mostrar tabla de posiciones");
+        jmi_tablaPos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_tablaPosActionPerformed(evt);
+            }
+        });
         popup_torneo.add(jmi_tablaPos);
 
         jmi_agregarPartido.setText("Agregar partido");
@@ -400,7 +411,7 @@ public class Principal extends javax.swing.JFrame {
 
         jPanel9.setBackground(new java.awt.Color(0, 0, 102));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cb_e2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Puntaje");
@@ -422,7 +433,7 @@ public class Principal extends javax.swing.JFrame {
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel9Layout.createSequentialGroup()
                         .addGap(70, 70, 70)
-                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(cb_e2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel9Layout.createSequentialGroup()
                         .addGap(51, 51, 51)
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -440,7 +451,7 @@ public class Principal extends javax.swing.JFrame {
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addGap(81, 81, 81)
-                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cb_e2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37)
                 .addComponent(jLabel9)
                 .addGap(31, 31, 31)
@@ -450,7 +461,7 @@ public class Principal extends javax.swing.JFrame {
                 .addGap(17, 17, 17))
         );
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cb_e1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Puntaje");
@@ -468,7 +479,7 @@ public class Principal extends javax.swing.JFrame {
                         .addComponent(jLabel7))
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGap(65, 65, 65)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(cb_e1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel8Layout.createSequentialGroup()
                         .addGap(51, 51, 51)
                         .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -480,7 +491,7 @@ public class Principal extends javax.swing.JFrame {
             .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addGap(79, 79, 79)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cb_e1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
                 .addComponent(jLabel7)
                 .addGap(31, 31, 31)
@@ -538,6 +549,54 @@ public class Principal extends javax.swing.JFrame {
         jd_descargaLayout.setVerticalGroup(
             jd_descargaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jPanel11.setBackground(new java.awt.Color(0, 0, 102));
+
+        jtable_puntos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Deporte", "Puntos"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(jtable_puntos);
+
+        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
+        jPanel11.setLayout(jPanel11Layout);
+        jPanel11Layout.setHorizontalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel11Layout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(61, Short.MAX_VALUE))
+        );
+        jPanel11Layout.setVerticalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel11Layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(37, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jd_tablaLayout = new javax.swing.GroupLayout(jd_tabla.getContentPane());
+        jd_tabla.getContentPane().setLayout(jd_tablaLayout);
+        jd_tablaLayout.setHorizontalGroup(
+            jd_tablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jd_tablaLayout.setVerticalGroup(
+            jd_tablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -683,6 +742,7 @@ public class Principal extends javax.swing.JFrame {
         q5.add(depNode4);
 
         jd_addDeporte.dispose();
+        jt_nombreDep.setText("");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -700,6 +760,8 @@ public class Principal extends javax.swing.JFrame {
 
         modelo.reload();
         jd_addTorneo.dispose();
+        jt_nombreTorneo.setText("");
+        jt_periodo.setText("");
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void mainTreeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mainTreeMouseClicked
@@ -740,6 +802,7 @@ public class Principal extends javax.swing.JFrame {
         t.getEquipos().add(e);
         System.out.println(deportes);
         jd_addEquipo.dispose();
+        jt_nombreEquipo.setText("");
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jmi_agregarEquipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_agregarEquipoActionPerformed
@@ -839,6 +902,7 @@ public class Principal extends javax.swing.JFrame {
             BinariosDeportes bD = new BinariosDeportes(archivo.getPath() + ".bin");
             bD.setDeporte(((Deporte) cb_deportes1.getSelectedItem()));
             bD.escribir();
+            jd_guardarDep.dispose();
         }
     }//GEN-LAST:event_jButton5ActionPerformed
 
@@ -857,8 +921,8 @@ public class Principal extends javax.swing.JFrame {
         DefaultMutableTreeNode nodo = (DefaultMutableTreeNode) obj;
         Torneo t = (Torneo) nodo.getUserObject();
 
-        refreshCBEquipos(t, jComboBox1);
-        refreshCBEquipos(t, jComboBox2);
+        refreshCBEquipos(t, cb_e1);
+        refreshCBEquipos(t, cb_e2);
         jd_agregarPartida.setModal(true);
         jd_agregarPartida.pack();
         jd_agregarPartida.setLocationRelativeTo(this);
@@ -872,8 +936,29 @@ public class Principal extends javax.swing.JFrame {
         DefaultMutableTreeNode nodo = (DefaultMutableTreeNode) obj;
         Torneo t = (Torneo) nodo.getUserObject();
 
+        DefaultComboBoxModel model1 = (DefaultComboBoxModel) cb_e1.getModel();
+        Equipo dep1 = (Equipo) model1.getSelectedItem();
+        dep1.setPuntos(dep1.getPuntos() + (Integer) jSpinner1.getValue());
 
+        DefaultComboBoxModel model2 = (DefaultComboBoxModel) cb_e2.getModel();
+        Equipo dep2 = (Equipo) model2.getSelectedItem();
+        dep2.setPuntos(dep2.getPuntos() + (Integer) jSpinner2.getValue());
+
+        Partido p = new Partido(dep1, dep2);
+        
+        jSpinner1.setValue(0);
+        jSpinner2.setValue(0);
+        jd_agregarPartida.dispose();
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jmi_tablaPosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_tablaPosActionPerformed
+        refreshTabla();
+        
+        jd_tabla.setModal(true);
+        jd_tabla.pack();
+        jd_tabla.setLocationRelativeTo(this);
+        jd_tabla.setVisible(true);
+    }//GEN-LAST:event_jmi_tablaPosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -910,14 +995,6 @@ public class Principal extends javax.swing.JFrame {
         });
     }
 
-//    public void refreshCBDep() {
-//        DefaultComboBoxModel modelo = (DefaultComboBoxModel) cb_deportes.getModel();
-//        modelo.removeAllElements();
-//
-//        for (Deporte dep : deportes) {
-//            modelo.addElement(dep);
-//        }
-//    }
     public void refreshListEquipos(Torneo t) {
         DefaultListModel modelo = (DefaultListModel) jlist_equipos.getModel();
         for (Equipo e : t.getEquipos()) {
@@ -956,18 +1033,50 @@ public class Principal extends javax.swing.JFrame {
         }
     }
 
+    public void refreshTabla() {
+        DefaultTreeModel modelo = (DefaultTreeModel) mainTree.getModel();
+        DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modelo.getRoot();
+        Object obj = mainTree.getSelectionPath().getLastPathComponent();
+        DefaultMutableTreeNode nodo = (DefaultMutableTreeNode) obj;
+        Torneo t = (Torneo) nodo.getUserObject();
+        
+        sort(t);
+        Collections.reverse(t.getEquipos());
+
+        DefaultTableModel modeloTabla = (DefaultTableModel) jtable_puntos.getModel();
+        modeloTabla.setRowCount(0);
+        for (Equipo e : t.getEquipos()) {
+            Object [] datos = {e.getNombre(),e.getPuntos()};
+            modeloTabla.addRow(datos);
+        }
+
+    }
+
+    public void sort(Torneo t) {
+        int n = t.getEquipos().size();
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - i - 1; j++) {
+                if (t.getEquipos().get(j).getPuntos() > t.getEquipos().get(j + 1).getPuntos()) {
+                    Equipo temp = t.getEquipos().get(j);
+                    t.getEquipos().set(j, t.getEquipos().get(j + 1));
+                    t.getEquipos().set(j + 1, temp);
+                }
+            }
+        }
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem agregarTorneo;
     private javax.swing.JComboBox<String> cb_deportes;
     private javax.swing.JComboBox<String> cb_deportes1;
+    private javax.swing.JComboBox<String> cb_e1;
+    private javax.swing.JComboBox<String> cb_e2;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -980,6 +1089,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -989,6 +1099,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JSpinner jSpinner2;
@@ -1001,6 +1112,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JDialog jd_descarga;
     private javax.swing.JDialog jd_guardarDep;
     private javax.swing.JDialog jd_listEquipos;
+    private javax.swing.JDialog jd_tabla;
     private javax.swing.JList<String> jlist_equipos;
     private javax.swing.JMenuItem jmi_agregarEquipo;
     private javax.swing.JMenuItem jmi_agregarPartido;
@@ -1011,6 +1123,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTextField jt_nombreEquipo;
     private javax.swing.JTextField jt_nombreTorneo;
     private javax.swing.JTextField jt_periodo;
+    private javax.swing.JTable jtable_puntos;
     private javax.swing.JTree mainTree;
     private javax.swing.JPopupMenu popup_dep;
     private javax.swing.JPopupMenu popup_torneo;
